@@ -242,7 +242,7 @@ namespace NekoGui {
         _add(new configItem("mux_protocol", &mux_protocol, itemType::string));
         _add(new configItem("mux_concurrency", &mux_concurrency, itemType::integer));
         _add(new configItem("mux_padding", &mux_padding, itemType::boolean));
-        _add(new configItem("mux_default_on", &mux_default_on, itemType::boolean));
+        _add(new configItem("mux_default_on", &mux_default_on, itemType::boolean));        
         _add(new configItem("traffic_loop_interval", &traffic_loop_interval, itemType::integer));
         _add(new configItem("test_concurrent", &test_concurrent, itemType::integer));
         _add(new configItem("theme", &theme, itemType::string));
@@ -280,6 +280,8 @@ namespace NekoGui {
         _add(new configItem("log_ignore", &log_ignore, itemType::stringList));
         _add(new configItem("start_minimal", &start_minimal, itemType::boolean));
         _add(new configItem("max_log_line", &max_log_line, itemType::integer));
+        _add(new configItem("interval", &intervalf, itemType::string));
+        _add(new configItem("length", &lengthf, itemType::string));
         _add(new configItem("splitter_state", &splitter_state, itemType::string));
         _add(new configItem("utlsFingerprint", &utlsFingerprint, itemType::string));
         _add(new configItem("core_box_clash_api", &core_box_clash_api, itemType::integer));

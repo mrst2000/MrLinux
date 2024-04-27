@@ -171,6 +171,10 @@ namespace NekoGui {
         bool core_ray_windows_disable_auto_interface = false;
         QString core_ray_freedom_domainStrategy = "";
 
+        //frag
+        QString intervalf = "";
+        QString lengthf = "";
+        
         // Other Core
         ExtraCore *extraCore = new ExtraCore;
 
