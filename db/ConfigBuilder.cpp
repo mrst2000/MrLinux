@@ -238,6 +238,31 @@ namespace NekoGui {
         if (!status->result->error.isEmpty()) return;
 
         // direct & bypass & block
+    
+        status->outbounds += QJsonObject{
+        {"protocol", "freedom"},
+        {"settings", QJsonObject{
+            {"fragment", QJsonObject{
+                {"interval", dataStore->intervalf},
+                {"length", dataStore->lengthf},
+                {"packets", "tlshello"}
+            }}
+        }},
+        {"tag", "fragment-sni"}
+        };
+
+        status->outbounds += QJsonObject{
+        {"protocol", "freedom"},
+        {"settings", QJsonObject{
+            {"fragment", QJsonObject{
+                {"interval", dataStore->intervalf},
+                {"length", dataStore->lengthf},
+                {"packets", "1-3"}
+            }}
+        }},
+        {"tag", "fragment-tcp"}
+        };
+
         status->outbounds += QJsonObject{
             {"protocol", "freedom"},
             {"domainStrategy", dataStore->core_ray_freedom_domainStrategy},
