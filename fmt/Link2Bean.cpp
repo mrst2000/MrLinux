@@ -52,6 +52,10 @@ namespace NekoGui_fmt {
         serverPort = url.port();
         password = url.userName();
         if (serverPort == -1) serverPort = 443;
+        
+
+
+        
 
         // security
 
@@ -75,6 +79,7 @@ namespace NekoGui_fmt {
         stream->reality_pbk = GetQueryValue(query, "pbk", "");
         stream->reality_sid = GetQueryValue(query, "sid", "");
         stream->reality_spx = GetQueryValue(query, "spx", "");
+        if (!query.queryItemValue("dialer").isEmpty()) stream->dialer_proxy = GetQueryValue(query, "dialer", "");
         stream->utlsFingerprint = GetQueryValue(query, "fp", "");
         if (stream->utlsFingerprint.isEmpty()) {
             stream->utlsFingerprint = NekoGui::dataStore->utlsFingerprint;
@@ -161,6 +166,15 @@ namespace NekoGui_fmt {
             stream->host = objN["host"].toString();
             stream->path = objN["path"].toString();
             stream->sni = objN["sni"].toString();
+            if (objN.contains("dialer")) {
+                // If the key exists, set the value "fragment" to stream->dialer_proxy
+                stream->dialer_proxy = objN["dialer"].toString();
+            } else {
+                stream->dialer_proxy = "";
+            }
+            NekoGui::dataStore->intervalf = objN["interval"].toString();
+            NekoGui::dataStore->lengthf = objN["length"].toString();
+
             stream->header_type = objN["type"].toString();
             auto net = objN["net"].toString();
             if (!net.isEmpty()) {
@@ -189,6 +203,11 @@ namespace NekoGui_fmt {
 
             aid = 0; // “此分享标准仅针对 VMess AEAD 和 VLESS。”
             security = GetQueryValue(query, "encryption", "auto");
+
+            
+            
+            
+            
 
             // security
             auto type = GetQueryValue(query, "type", "tcp");

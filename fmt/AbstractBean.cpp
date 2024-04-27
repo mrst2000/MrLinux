@@ -5,6 +5,8 @@
 #include <QUrl>
 
 namespace NekoGui_fmt {
+
+    
     AbstractBean::AbstractBean(int version) {
         this->version = version;
         _add(new configItem("_v", &this->version, itemType::integer));

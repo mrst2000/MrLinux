@@ -31,6 +31,7 @@ namespace NekoGui_fmt {
         QString name = "";
         QString serverAddress = "127.0.0.1";
         int serverPort = 1080;
+        
 
         QString custom_config = "";
         QString custom_outbound = "";

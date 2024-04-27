@@ -42,6 +42,14 @@ namespace NekoGui_fmt {
             streamSettings["tcpSettings"] = QJsonObject{{"header", header}};
         }
 
+        QJsonObject sock;
+        sock["dialerProxy"] = dialer_proxy;
+        sock["tcpFastOpen"] = true;
+        sock["tcpNoDelay"] = true;
+
+        streamSettings["sockopt"] = sock;
+
+
         if (security == "tls") {
             QJsonObject tls;
             if (!utlsFingerprint.isEmpty()) tls["fingerprint"] = utlsFingerprint;
