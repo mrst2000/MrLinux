@@ -11,11 +11,11 @@ rm -rf $DEST
 mkdir -p $DEST
 
 #### copy exe ####
-cp $BUILD/nekoray.exe $DEST
+cp $BUILD/MrLiunx.exe $DEST
 
 #### deploy qt & DLL runtime ####
 pushd $DEST
-windeployqt nekoray.exe --no-compiler-runtime --no-system-d3d-compiler --no-opengl-sw --verbose 2
+windeployqt MrLinux.exe --no-compiler-runtime --no-system-d3d-compiler --no-opengl-sw --verbose 2
 rm -rf translations
 rm -rf libEGL.dll libGLESv2.dll Qt6Pdf.dll
 
