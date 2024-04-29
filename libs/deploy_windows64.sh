@@ -11,7 +11,7 @@ rm -rf $DEST
 mkdir -p $DEST
 
 #### copy exe ####
-cp $BUILD/MrLiunx.exe $DEST
+cp $BUILD/MrLinux.exe $DEST
 
 #### deploy qt & DLL runtime ####
 pushd $DEST
