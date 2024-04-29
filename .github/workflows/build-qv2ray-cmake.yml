@@ -1,4 +1,4 @@
-name: Nekoray build matrix - cmake
+name: MrLinux build matrix - cmake
 
 on:
   workflow_dispatch:
@@ -53,7 +53,7 @@ jobs:
       - name: Uploading Artifact
         uses: actions/upload-artifact@master
         with:
-          name: NekoRay-${{ github.sha }}-Common-${{ matrix.cross_os }}-${{ matrix.cross_arch }}
+          name: MrLinux-${{ github.sha }}-Common-${{ matrix.cross_os }}-${{ matrix.cross_arch }}
           path: artifacts.tgz
   build-cpp:
     strategy:
@@ -107,8 +107,8 @@ jobs:
         if: steps.cache-deps.outputs.cache-hit != 'true' && matrix.platform == 'ubuntu-20.04'
         run: |
           docker run --rm \
-            -v $PWD:/nekoray \
-            -w /nekoray \
+            -v $PWD:/MrLinux \
+            -w /MrLinux \
             ghcr.io/matsuridayo/debian10-qt5:20230131 \
             bash -c "./libs/build_deps_all.sh"
       # ========================================================================================================= Generate MakeFile and Build
@@ -132,8 +132,8 @@ jobs:
         if: matrix.platform == 'ubuntu-20.04'
         run: |
           docker run --rm \
-            -v $PWD:/nekoray \
-            -w /nekoray \
+            -v $PWD:/MrLinux \
+            -w /MrLinux \
             ghcr.io/matsuridayo/debian10-qt5:20230131 \
             bash -c "mkdir build && pushd build && cmake -GNinja -DCMAKE_BUILD_TYPE=Release .. && ninja && popd &&./libs/deploy_linux64.sh"
       # ========================================================================================================= Deployments
@@ -143,7 +143,7 @@ jobs:
       - name: Uploading Artifact
         uses: actions/upload-artifact@master
         with:
-          name: NekoRay-${{ github.sha }}-${{ matrix.platform }}-${{ matrix.arch }}-Qt${{ matrix.qt_version }}
+          name: MrLinux-${{ github.sha }}-${{ matrix.platform }}-${{ matrix.arch }}-Qt${{ matrix.qt_version }}
           path: artifacts.tgz
   publish:
     name: Pack & Publish Release
@@ -171,13 +171,13 @@ jobs:
           cp -r public_res/* windows64
           rm -rf public_res *.pdb
           ####
-          mv linux64 nekoray
-          zip -r $version_standalone-linux64.zip nekoray
-          rm -rf nekoray
+          mv linux64 MrLinux
+          zip -r $version_standalone-linux64.zip MrLinux
+          rm -rf MrLinux
           ####
-          mv windows64 nekoray
-          zip -r $version_standalone-windows64.zip nekoray
-          rm -rf nekoray
+          mv windows64 MrLinux
+          zip -r $version_standalone-windows64.zip MrLinux
+          rm -rf MrLinux
       - name: Pack Debian
         run: |
           source libs/env_deploy.sh
@@ -186,8 +186,8 @@ jobs:
           cp -r public_res/* linux64
           ####
           bash ../libs/package_debian.sh ${{ github.event.inputs.tag }}
-          mv nekoray.deb $version_standalone-debian-x64.deb
-          sudo rm -rf nekoray
+          mv MrLinux.deb $version_standalone-debian-x64.deb
+          sudo rm -rf MrLinux
       - name: Pack AppImage
         run: |
           source libs/env_deploy.sh
@@ -196,7 +196,7 @@ jobs:
           cp -r public_res/* linux64
           ####
           bash ../libs/package_appimage.sh
-          mv nekoray-x86_64.AppImage $version_standalone-linux-x64.AppImage
+          mv MrLinux-x86_64.AppImage $version_standalone-linux-x64.AppImage
       - name: Clean Up
         run: |
           cd deployment
