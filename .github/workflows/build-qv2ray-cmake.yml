@@ -161,11 +161,11 @@ jobs:
           path: download-artifact
       - name: Pack
         run: |
-          curl -Lo - https://github.com/tcnksm/ghr/releases/download/v0.13.0/ghr_v0.13.0_linux_amd64.tar.gz | tar xzv -
+          curl -Lo - https://github.com/tcnksm/ghr/releases/download/v0.13.0/ghr_v0.13.0_linux_amd64.tar.gz | tar xzv 
           mv ghr*linux_amd64/ghr .
           ####
           source libs/env_deploy.sh
-          find . -name artifacts.tgz | xargs -n1 tar xvzf
+          find . -name artifacts.tgz | xargs -n1 tar xvzf -
           cd deployment
           cp -r public_res/* linux64
           cp -r public_res/* windows64
