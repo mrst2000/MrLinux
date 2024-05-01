@@ -316,7 +316,7 @@ namespace NekoGui {
             if (IS_NEKO_BOX) {
                 return "NekoBox/PC/" + version + " (Prefer ClashMeta Format)";
             } else {
-                return "NekoRay/PC/" + version + " (Prefer ClashMeta Format)";
+                return "MrLinux/PC/" + version + " (Prefer ClashMeta Format)";
             }
         }
         return user_agent;
