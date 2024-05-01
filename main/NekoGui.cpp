@@ -326,17 +326,20 @@ namespace NekoGui {
     Routing::Routing(int preset) : JsonStore() {
         if (preset == 1) {
             direct_ip =
-                "geoip:cn\n"
+                "geoip:ir\n"
                 "geoip:private";
-            direct_domain = "geosite:cn";
+            direct_domain = "geosite:ir";
             proxy_ip = "";
             proxy_domain = "";
             block_ip = "";
-            block_domain =
-                "geosite:category-ads-all\n"
-                "domain:appcenter.ms\n"
-                "domain:firebase.io\n"
-                "domain:crashlytics.com\n";
+            block_domain = "";
+                    } else {
+                        direct_ip = "";
+                        direct_domain = "";
+                        proxy_ip = "";
+                        proxy_domain = "";
+                        block_ip = "";
+                        block_domain = "";
         }
         if (IS_NEKO_BOX) {
             if (!Preset::SingBox::DomainStrategy.contains(domain_strategy)) domain_strategy = "";
