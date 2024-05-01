@@ -2,37 +2,37 @@
 
 sudo apt-get install fuse -y
 
-cp -r linux64 nekoray.AppDir
+cp -r linux64 MrLinux.AppDir
 
 # The file for Appimage
 
-rm nekoray.AppDir/launcher
+rm MrLinux.AppDir/launcher
 
-cat >nekoray.AppDir/nekoray.desktop <<-EOF
+cat >MrLinux.AppDir/MrLinux.desktop <<-EOF
 [Desktop Entry]
-Name=nekoray
-Exec=echo "NekoRay started"
+Name=MrLinux
+Exec=echo "MrLinux started"
 Icon=nekoray
 Type=Application
 Categories=Network
 EOF
 
-cat >nekoray.AppDir/AppRun <<-EOF
+cat >MrLinux.AppDir/AppRun <<-EOF
 #!/bin/bash
 echo "PATH: \${PATH}"
-echo "NekoRay runing on: \$APPDIR"
-LD_LIBRARY_PATH=\${APPDIR}/usr/lib QT_PLUGIN_PATH=\${APPDIR}/usr/plugins \${APPDIR}/nekoray -appdata "\$@"
+echo "MrLinux runing on: \$APPDIR"
+LD_LIBRARY_PATH=\${APPDIR}/usr/lib QT_PLUGIN_PATH=\${APPDIR}/usr/plugins \${APPDIR}/MrLinux -appdata "\$@"
 EOF
 
-chmod +x nekoray.AppDir/AppRun
+chmod +x MrLinux.AppDir/AppRun
 
 # build
 
 curl -fLSO https://github.com/AppImage/AppImageKit/releases/latest/download/appimagetool-x86_64.AppImage
 chmod +x appimagetool-x86_64.AppImage
-./appimagetool-x86_64.AppImage nekoray.AppDir
+./appimagetool-x86_64.AppImage MrLinux.AppDir
 
 # clean
 
 rm appimagetool-x86_64.AppImage
-rm -rf nekoray.AppDir
+rm -rf MrLinux.AppDir
