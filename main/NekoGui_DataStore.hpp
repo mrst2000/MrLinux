@@ -4,7 +4,7 @@ namespace NekoGui {
 
     class Routing : public JsonStore {
     public:
-        QString direct_ip = "geoip:ir\\ngeoip:private";
+        QString direct_ip = "geoip:IR\\ngeoip:private";
         QString direct_domain = "geosite:ir";
         QString proxy_ip;
         QString proxy_domain;
@@ -108,7 +108,7 @@ namespace NekoGui {
         bool mux_default_on = true;
         QString theme = "0";
         QString v2ray_asset_dir = "";
-        int language = 0;
+        int language = 1;
         QString mw_size = "";
         bool check_include_pre = false;
         QString system_proxy_format = "";
