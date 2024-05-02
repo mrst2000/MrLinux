@@ -95,30 +95,7 @@
       <item>
        <widget class="QToolButton" name="toolButton_ads">
         <property name="text">
-         <string>Ads</string>
-        </property>
-        <property name="icon">
-         <iconset theme="b-internet-web-browser">
-          <normaloff>.</normaloff>.</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>24</width>
-          <height>24</height>
-         </size>
-        </property>
-        <property name="popupMode">
-         <enum>QToolButton::InstantPopup</enum>
-        </property>
-        <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonTextUnderIcon</enum>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="toolButton_document">
-        <property name="text">
-         <string>Document</string>
+         <string>Server status</string>
         </property>
         <property name="icon">
          <iconset theme="b-dialog-question">
@@ -139,12 +116,12 @@
        </widget>
       </item>
       <item>
-       <widget class="QToolButton" name="toolButton_update">
+       <widget class="QToolButton" name="menu_add_from_clipboard3">
         <property name="text">
-         <string>Update</string>
+         <string>Add subscription Link</string>
         </property>
         <property name="icon">
-         <iconset theme="b-system-software-update">
+         <iconset theme="b-internet-web-browser">
           <normaloff>.</normaloff>.</iconset>
         </property>
         <property name="iconSize">
@@ -172,7 +149,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>Tun Mode</string>
+           <string>Vpn Mode</string>
           </property>
          </widget>
         </item>
