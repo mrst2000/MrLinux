@@ -5,13 +5,13 @@ namespace NekoGui {
     class Routing : public JsonStore {
     public:
         QString direct_ip = 
-                "geoip:IR\n"
-                "geoip:PRIVATE";
-        QString direct_domain;
+                "geoip:ir\n"
+                "geoip:private";
+        QString direct_domain = "geosite:all";
         QString proxy_ip;
         QString proxy_domain;
         QString block_ip;
-        QString block_domain;
+        QString block_domain = "geosite:ads";
         QString def_outbound = "proxy";
         QString custom = "{\"rules\": []}";
 
