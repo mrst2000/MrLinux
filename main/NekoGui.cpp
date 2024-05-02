@@ -326,14 +326,14 @@ namespace NekoGui {
     Routing::Routing(int preset) : JsonStore() {
         if (preset == 1) {
             direct_ip =
-                "geoip:IR\n"
-                "geoip:PRIVATE";
-            direct_domain = "geosite:cn";
+                "geoip:ir\n"
+                "geoip:private";
+            direct_domain = "geosite:ir";
             proxy_ip = "";
             proxy_domain = "";
             block_ip = "";
             block_domain =
-                "geosite:category-ads-all\n"
+                "geosite:ads\n"
                 "domain:appcenter.ms\n"
                 "domain:firebase.io\n"
                 "domain:crashlytics.com\n";
