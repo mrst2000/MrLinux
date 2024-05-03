@@ -66,12 +66,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     themeManager->ApplyTheme(NekoGui::dataStore->theme);
     ui->setupUi(this);
     //
-    connect(ui->menu_start, &QAction::triggered, this, [=](bool checked) {
-        neko_set_spmode_vpn(checked);
+    connect(ui->menu_start, &QAction::triggered, this, [=]() {
+        neko_set_spmode_vpn(true);
         neko_start();
     });
-    connect(ui->menu_stop, &QAction::triggered, this, [=](bool checked) {
-        neko_set_spmode_vpn(checked);
+    connect(ui->menu_stop, &QAction::triggered, this, [=]() {
+        neko_set_spmode_vpn(false);
         neko_stop();
     });
     connect(ui->tabWidget->tabBar(), &QTabBar::tabMoved, this, [=](int from, int to) {
