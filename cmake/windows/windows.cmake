@@ -5,11 +5,11 @@ include(cmake/windows/generate_product_version.cmake)
 generate_product_version(
         QV2RAY_RC
         ICON "${CMAKE_SOURCE_DIR}/res/nekoray.ico"
-        NAME "nekoray"
-        BUNDLE "nekoray"
-        COMPANY_NAME "nekoray"
-        COMPANY_COPYRIGHT "nekoray"
-        FILE_DESCRIPTION "nekoray"
+        NAME "MrLinux"
+        BUNDLE "MrLinux"
+        COMPANY_NAME "MrLinux"
+        COMPANY_COPYRIGHT "MrLinux"
+        FILE_DESCRIPTION "MrLinux"
 )
 add_definitions(-DUNICODE -D_UNICODE -DNOMINMAX)
 set(GUI_TYPE WIN32)
