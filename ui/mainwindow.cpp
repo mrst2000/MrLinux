@@ -66,8 +66,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     themeManager->ApplyTheme(NekoGui::dataStore->theme);
     ui->setupUi(this);
     //
-    connect(ui->menu_start, &QAction::triggered, this, [=]() { neko_start(); });
-    connect(ui->menu_stop, &QAction::triggered, this, [=]() { neko_stop(); });
+    connect(ui->menu_start, &QAction::triggered, this, [=](bool checked) {
+        neko_set_spmode_vpn(checked);
+        neko_start();
+    });
+    connect(ui->menu_stop, &QAction::triggered, this, [=](bool checked) {
+        neko_set_spmode_vpn(checked);
+        neko_stop();
+    });
     connect(ui->tabWidget->tabBar(), &QTabBar::tabMoved, this, [=](int from, int to) {
         // use tabData to track tab & gid
         NekoGui::profileManager->groupsTabOrder.clear();
@@ -113,6 +119,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     
     connect(ui->toolButton_ads, &QToolButton::clicked, this, [=] { QDesktopServices::openUrl(QUrl("https://mrlinux.iran.liara.run/status/servers")); });
     connect(ui->menu_add_from_clipboard3, &QToolButton::clicked, ui->menu_add_from_clipboard, &QAction::trigger);
+    connect(ui->menu_update_subscription2, &QToolButton::clicked, ui->menu_update_subscription, &QAction::trigger);
 
     // Setup log UI
     ui->splitter->restoreState(DecodeB64IfValid(NekoGui::dataStore->splitter_state));
