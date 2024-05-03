@@ -517,7 +517,7 @@ namespace NekoGui_sub {
             auto a = QInputDialog::getItem(nullptr,
                                            QObject::tr("url detected"),
                                            QObject::tr("%1\nHow to update?").arg(content),
-                                           items, 0, false, &ok);
+                                           items, 1, false, &ok);
             if (!ok) return;
             if (items.indexOf(a) <= 1) asURL = true;
             if (items.indexOf(a) == 1) createNewGroup = true;
@@ -526,8 +526,9 @@ namespace NekoGui_sub {
         runOnNewThread([=] {
             auto gid = _sub_gid;
             if (createNewGroup) {
+                QString groupName = QString("MrLinux_%1").arg(NekoGui::profileManager->groups.size());
                 auto group = NekoGui::ProfileManager::NewGroup();
-                group->name = QUrl(str).host();
+                group->name = groupName;
                 group->url = str;
                 NekoGui::profileManager->AddGroup(group);
                 gid = group->id;
