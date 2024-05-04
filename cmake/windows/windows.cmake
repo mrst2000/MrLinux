@@ -4,7 +4,7 @@ set(PLATFORM_LIBRARIES wininet wsock32 ws2_32 user32 rasapi32 iphlpapi)
 include(cmake/windows/generate_product_version.cmake)
 generate_product_version(
         QV2RAY_RC
-        ICON "${CMAKE_SOURCE_DIR}/res/nekoray.ico"
+        ICON "${CMAKE_SOURCE_DIR}/res/mrlinux.ico"
         NAME "MrLinux"
         BUNDLE "MrLinux"
         COMPANY_NAME "MrLinux"
