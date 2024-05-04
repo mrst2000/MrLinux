@@ -123,7 +123,7 @@ int main(int argc, char* argv[]) {
     DS_cores->start();
 
     // RunGuard
-    RunGuard guard("nekoray" + wd.absolutePath());
+    RunGuard guard("mrlinux" + wd.absolutePath());
     quint64 guard_data_in = GetRandomUint64();
     quint64 guard_data_out = 0;
     if (!NekoGui::dataStore->flag_many && !guard.tryToRun(&guard_data_in)) {
@@ -141,7 +141,7 @@ int main(int argc, char* argv[]) {
             return 0;
         }
         // Some Bad System
-        QMessageBox::warning(nullptr, "NekoRay", "RunGuard disallow to run, use -many to force start.");
+        QMessageBox::warning(nullptr, "mrlinux", "RunGuard disallow to run, use -many to force start.");
         return 0;
     }
     MF_release_runguard = [&] { guard.release(); };
